@@ -62,7 +62,6 @@ const Img = styled.img`
     margin-right: 10px;
 `;
 
-
 interface ICoin {
     id: string,
     name: string,
