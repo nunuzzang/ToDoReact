@@ -12,7 +12,8 @@ export function fetchCoinInfo(coinId: string) {
 }
 
 export function fetchCoinTickers(coinId: string) {
-    return fetch(`${BASE_URL}/tickers/${coinId}`).then((response) => response.json()
+    return fetch(`${BASE_URL}/tickers/${coinId}`).then((response) =>
+        response.json()
     );
 }
 
@@ -20,4 +21,3 @@ export function fetchCoinHistroy(coinId: string) {
     return fetch(`${NICO_URL}${coinId}`).then((response) => response.json()
     );
 }
-

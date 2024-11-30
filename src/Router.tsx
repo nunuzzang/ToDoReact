@@ -3,12 +3,12 @@ import Coins from "./routes/Coins"
 import Coin from "./routes/Coin"
 
 function Router() {
-    return <BrowserRouter>
+    return <BrowserRouter basename="/CoinTrackerClone">
         <Switch>
             <Route path="/:coinId">
                 <Coin />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
                 <Coins />
             </Route>
         </Switch>

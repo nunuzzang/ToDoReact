@@ -1,25 +1,11 @@
 import { useQuery } from "react-query";
 import { fetchCoinHistroy } from "../api";
 import ApexCharts from "react-apexcharts";
-
-interface IHistorical {
-    time_open: number;
-    time_close: number;
-    open: string;
-    high: string;
-    low: string;
-    close: string;
-    volume: string;
-    market_cap: number;
-}
-
-interface ChartProps {
-    coinId: string;
-}
+import { ChartProps, IHistorical } from "../interface";
 
 function Chart({ coinId }: ChartProps) {
     const { isLoading, data } = useQuery<IHistorical[]>(["ohlcv", coinId], () => fetchCoinHistroy(coinId), {
-        // refetchInterval: 10000,
+        refetchInterval: 10000,
     })
 
     return (
@@ -105,6 +91,18 @@ function Chart({ coinId }: ChartProps) {
                                 show: false,
                             },
                             background: "transparent",
+                            animations: {
+                                enabled: true,
+                                speed: 800,
+                                animateGradually: {
+                                    enabled: true,
+                                    delay: 150,
+                                },
+                                dynamicAnimation: {
+                                    enabled: true,
+                                    speed: 350,
+                                }
+                            }
                         },
                         grid: {
                             show: false,
@@ -121,9 +119,6 @@ function Chart({ coinId }: ChartProps) {
                             },
 
                         },
-                        tooltip: {
-
-                        }
 
                     }}
                 />
@@ -133,5 +128,3 @@ function Chart({ coinId }: ChartProps) {
 }
 
 export default Chart;
-
-// [`${parseFloat(price.open)}`, `${parseFloat(price.high)}`, `${parseFloat(price.low)}`, `${parseFloat(price.close)}`],
