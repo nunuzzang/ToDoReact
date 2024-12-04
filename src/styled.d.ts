@@ -6,6 +6,6 @@ declare module 'styled-components' {
         bgColor: string;
         accentColor: string;
         almightyColor: string;
-        coinColor: string;
+        umColor: string;
     }
 }
