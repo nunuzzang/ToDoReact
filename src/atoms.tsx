@@ -35,10 +35,17 @@ export const toDoSelector = selector({
     }
 })
 
-
-
-
-export const categoriesState = atom<string[]>({
+/* export const categoriesState = atom<string[]>({
     key: "categories",
     default: [Categories.TO_DO, Categories.DOING, Categories.DONE], // 기본 카테고리
+}); */
+
+export const categoriesState = atom<{ [key: string]: IToDo[] }>({
+    key: "categories",
+    default: {
+        [Categories.TO_DO]: [],
+        [Categories.DOING]: [],
+        [Categories.DONE]: [],
+    },
+    effects_UNSTABLE: [persistAtom],
 });
